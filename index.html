@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Projeto Dark Mode</title>
+	<link rel="stylesheet" href="index.css">
+    <!-- Cole o link da fonte aqui -->
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="btn"></div>
+	<div class="container">
+		<div class="typing-text" id="typing-text"></div>
+	</div>
+	<script>
+		const btn = document.querySelector('.btn');
+		const container = document.querySelector('.container');
+		const typingText = document.getElementById('typing-text');
+		const name = "Davi Souza";
+		const message = "Bem-vindo ao Dark Mode!";
+		let messageTyped = false;
+
+		btn.onclick = function() {
+			this.classList.toggle('active');
+			container.classList.toggle('active');
+			if (!messageTyped) {
+				typeText(message);
+				messageTyped = true;
+			}
+		}
+
+		function typeText(text) {
+			let index = 0;
+			typingText.innerHTML = '';
+
+			function typeNextCharacter() {
+				if (index < text.length) {
+					typingText.innerHTML += text.charAt(index);
+					index++;
+					setTimeout(typeNextCharacter, 100); 
+				}
+			}
+
+			typeNextCharacter(); 
+		}
+		window.onload = function() {
+			if (!messageTyped) {
+				typeText(message);
+				messageTyped = true;
+			}
+		};
+	</script>
+</body>
+</html>
